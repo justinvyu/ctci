@@ -56,3 +56,72 @@ def urlify(s, n):
     """
     s = s[:n]
     return s.replace(" ", "%20")
+
+# 1.4 Palindrome Permutation
+
+def is_palindrome_permutation(s):
+    """
+    Returns true if a reordering of the characters in s can produce a palindrome. O(n)
+    >>> is_palindrome_permutation("Tact Coa")
+    True
+    >>> is_palindrome_permutation("ab ab   ab ")
+    False
+    """
+    s = s.replace(" ", "").lower()
+    # Generate a dictionary, key (character) -> value (count)
+    count = {}
+    for i in range(len(s)):
+        key = s[i]
+        count[key] = count.get(key, 0) + 1
+    odds = map(lambda x: x % 2, count.values())
+    return sum(odds) == 1
+
+# 1.5 One Away
+
+def is_one_away(a, b):
+    """
+    Returns true if one of the strings a or b can be modified by inserting, removing
+    or replacing a character to match the other string. Return true if the two strings
+    are already identical (zero edits).
+    >>> is_one_away("pale", "ple")
+    True
+    >>> is_one_away("pales", "pale")
+    True
+    >>> is_one_away("pale", "bale")
+    True
+    >>> is_one_away("pale", "bake")
+    False
+    >>> is_one_away("pale", "pale")
+    True
+    """
+    if len(a) < len(b):
+        a, b = b, a
+    for i in range(len(a)):
+        removed_a = a[:i] + a[i+1:]
+        removed_b = b[:i] + b[i+1:]
+        if removed_a == b or removed_a == removed_b:
+            return True
+    return False
+
+# 1.6 String Compression
+
+def string_compress(s):
+    """
+    Returns a 'compressed' version of the string that joins each letter as well as its
+    consecutive frequency. Returns the original string if the 'compressed' version is
+    longer.
+    >>> string_compress("aabcccccaaa")
+    'a2b1c5a3'
+    >>> string_compress("abc")
+    'abc'
+    """
+    compressed = ""
+    current, count = "", 0
+    for i in range(len(s)):
+        if current and current != s[i]:
+            compressed += current + str(count)
+            current, count = s[i], 1
+        else:
+            current, count = s[i], count + 1
+    compressed += current + str(count)
+    return min(compressed, s, key=lambda x: len(x))
