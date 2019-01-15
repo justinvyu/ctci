@@ -15,11 +15,11 @@ def remove_dups(lst):
     curr, prev = lst, lst
     vals = set()
     while curr:
-        if curr.first in vals:
+        if curr.data in vals:
             prev.rest = curr.rest
             curr = curr.rest
         else:
-            vals.add(curr.first)
+            vals.add(curr.data)
             prev = curr
             curr = curr.rest
 
@@ -42,7 +42,7 @@ def get_kth_to_last(lst, k):
     while i > 0:
         end = end.rest
         i -= 1
-    return end.first
+    return end.data
 
 # 2.3 Delete Middle Node
 
@@ -56,7 +56,7 @@ def delete_middle_node(node):
     >>> lst
     Node(1, Node(2, Node(5, Node(6))))
     """
-    node.first = node.rest.first
+    node.data = node.rest.data
     node.rest = node.rest.rest
 
 # 2.4 Partition
@@ -73,10 +73,10 @@ def partition(lst, threshold):
     right = Node.empty
     end = left
     while lst:
-        if lst.first >= threshold:
-            right = Node(lst.first, right)
+        if lst.data >= threshold:
+            right = Node(lst.data, right)
         else:
-            left = Node(lst.first, left)
+            left = Node(lst.data, left)
             if not end:
                 end = left
         lst = lst.rest

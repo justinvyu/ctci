@@ -33,9 +33,9 @@ class LinkedList:
 class Node:
     empty = ()
 
-    def __init__(self, first, rest=empty):
+    def __init__(self, data, rest=empty):
         assert rest is Node.empty or isinstance(rest, Node)
-        self.first = first
+        self.data = data
         self.rest = rest
 
     def __repr__(self):
@@ -43,5 +43,5 @@ class Node:
             rest = ", " + repr(self.rest)
         else:
             rest = ""
-        return "Node("+repr(self.first)+rest+")"
+        return "Node("+repr(self.data)+rest+")"
 
