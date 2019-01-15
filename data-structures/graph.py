@@ -1,3 +1,4 @@
+from collections import defaultdict
 
 class Graph:
     def __init__(self, connections, directed=True):
@@ -16,9 +17,17 @@ class Graph:
             if not self.directed:
                 self._graph[b].add(a)
 
-    def has_visted(self, node):
+    def has_visited(self, node):
         assert node in self.nodes, "Error: node value not in the graph"
         return self.nodes[node].visited
+
+    def visit(self, node):
+        assert node in self.nodes, "Error: node value not in the graph"
+        self.nodes[node].visited = True
+
+    def get_adjacent_nodes(self, node):
+        assert node in self.nodes, "Error: node value not in the graph"
+        return self._graph[node]
 
 class GraphNode:
     def __init__(self, value):

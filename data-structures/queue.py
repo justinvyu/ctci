@@ -5,7 +5,7 @@ class Queue:
         self.first = Node.empty
         self.last = Node.empty
 
-    def add(self, item):
+    def enqueue(self, item):
         node = Node(item)
         if self.last:
             self.last.rest = node
@@ -13,7 +13,7 @@ class Queue:
         if not self.first:
             self.first = self.last # First = last for the first item
 
-    def remove(self):
+    def dequeue(self):
         assert not self.is_empty(), "Error: queue is empty"
         data = self.first.data
         self.first = self.first.rest
