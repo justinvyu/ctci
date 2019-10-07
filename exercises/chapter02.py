@@ -1,6 +1,4 @@
-import sys
-sys.path.insert(0, '../data-structures/')
-from linkedlist import LinkedList, Node
+from linked_list import LinkedList, Node
 
 # 2.1 Remove Dups
 

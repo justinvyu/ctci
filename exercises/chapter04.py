@@ -1,8 +1,6 @@
 
 # Trees and Graphs
 
-import sys
-sys.path.insert(0, "../data-structures/")
 from graph import Graph
 from queue import Queue
 from tree import BinaryTree

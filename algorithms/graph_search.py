@@ -1,6 +1,4 @@
 
-import sys
-sys.path.insert(0, '../data-structures/')
 from graph import Graph
 from queue import Queue
 
@@ -32,3 +30,6 @@ def BFS(graph, root):
             if not graph.has_visited(node):
                 q.enqueue(node)
                 graph.visit(node)
+
+if __name__ == '__main__':
+    pass 
